@@ -1,0 +1,19 @@
+{
+    "seed": 12345,
+    "workloads":[
+        {
+            "type": "azure_trace",
+            "parameters": {
+                "app_predicate": "lambda app: int(app, 16) % 8 == 1",
+                "invocations": "invocations_per_function_md.anon.d01.csv",
+                "durations": "function_durations_percentiles.anon.d01.csv",
+                "memory": "app_memory_percentiles.anon.d01.csv",
+                "start_minute": 1000,
+                "length": 5,
+                "start_window": 0.8,
+                "start_load": 0.1,
+                "downsample_factor": 0.05
+            }
+        }
+    ]
+}

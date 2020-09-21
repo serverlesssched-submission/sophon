@@ -1,0 +1,33 @@
+controller:
+  imageName: "10.0.4.152:5000/whisk/controller-dev"
+  imageTag: "latest"
+  replicaCount: 1
+user_events:
+  imageName: "10.0.4.152:5000/whisk/user-events-dev"
+  imageTag: "latest"
+whisk:
+  ingress:
+    type: NodePort
+    apiHostName: 10.0.4.152
+    apiHostPort: 31001
+  limits:
+    actionsInvokesPerminute: 60000
+    actionsInvokesConcurrent: 30000
+    triggersFiresPerminute: 60000
+    actionsSequenceMaxlength: 50000
+k8s:
+  persistence:
+    enabled: false
+nginx:
+  httpsNodePort: 31001
+invoker:
+  replicaCount: 10
+  imageName: "10.0.4.152:5000/whisk/invoker-dev"
+  imageTag: "latest"
+  containerFactory:
+    replicaCount: 10
+    impl: "kubernetes"
+metrics:
+  prometheusEnabled: true
+metrics:
+  userMetricsEnabled: true

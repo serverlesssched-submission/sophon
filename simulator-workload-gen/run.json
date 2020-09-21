@@ -1,0 +1,65 @@
+{
+    "seed": 12345,
+    "workloads": [
+        {
+            "type": "azure",
+            "parameters": {
+                "span": 300,
+                "n_functions": 15000,
+                "n_invocations": 1500000,
+                "mem_hist": [
+                    0.48,
+                    0.21,
+                    0.16
+                ],
+                "default_mem_hist": [
+                    0.48,
+                    0.21,
+                    0.16,
+                    0.07,
+                    0.05,
+                    0.03
+                ],
+                "mem_bins": [
+                    0.5,
+                    1.5,
+                    2.5,
+                    5.5
+                ],
+                "default_mem_bins": [
+                    0.5,
+                    1.5,
+                    2.5,
+                    5.5,
+                    10.5,
+                    21.5,
+                    42.5
+                ],
+                "dist_mu": -7.85,
+                "dist_sigma": 2.75,
+                "CV": 1,
+                "dur_mu": -0.38,
+                "dur_sigma": 2.36,
+                "start_window": 0.8,
+                "start_load": 0.1,
+                "BP_percentage": 0.0
+            }
+        }
+    ],
+    "hosts": [
+        {
+            "amount": 1000,
+            "configs": {
+                "capacity": 32,
+                "invocation_per_host_cap": 1000,
+                "install_time": 2,
+                "protect_time": 0
+            }
+        }
+    ],
+    "cluster": {
+        "configs": {
+            "host_local_queue": true
+        }
+    }
+}

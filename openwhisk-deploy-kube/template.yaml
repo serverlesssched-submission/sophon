@@ -1,0 +1,48 @@
+controller:
+  replicaCount: 1
+  #options: "-Dlogback.log.level=DEBUG"
+  imageName: "SEDcontroller:5000/whisk/controller"
+  imageTag: "latest"
+  options: "-Dwhisk.loadbalancer.lambda=SEDlambda -Dwhisk.loadbalancer.distance-weight=SEDdistanceweight -Dwhisk.loadbalancer.eviction-weight=SEDevictionweight -Dwhisk.loadbalancer.accept-threshold=SEDthreshold -Dwhisk.loadbalancer.bp-lambda=SEDbplambda -Dwhisk.loadbalancer.bpdistance-weight=SEDbpdistanceweight -Dwhisk.loadbalancer.bpeviction-weight=SEDbpevictionweight -Dwhisk.loadbalancer.bpaccept-threshold=SEDbpthreshold"
+whisk:
+  ingress:
+    type: NodePort
+    apiHostName: 10.0.4.152
+    apiHostPort: 31001
+  limits:
+    actionsInvokesPerminute: 999999
+    actionsInvokesConcurrent: 999999
+    triggersFiresPerminute: 999999
+    actionsSequenceMaxlength: 999999
+  containerPool:
+    userMemory: 2048m
+    #loadbalancer:
+    #distanceWeight: 5.55
+    #evictionWeight: 6.66
+    #acceptThreshold: 7.77
+#docker:
+#  client:
+#    parallelRuns: 100
+k8s:
+  persistence:
+    enabled: false
+nginx:
+  httpsNodePort: 31001
+invoker:
+  replicaCount: 10
+  imageName: "SEDcontroller:5000/whisk/invoker"
+  imageTag: "latest"
+  # options: "-Dlogback.log.level=DEBUG"
+  containerFactory:
+    impl: "kubernetes"
+    kubernetes:
+      replicaCount: 10
+    #impl: "docker"
+metrics:
+  prometheusEnabled: true
+  userMetricsEnabled: true
+  kamonEnabled: true
+  kamonTags: true
+user_events:
+  imageName: "SEDcontroller:5000/whisk/user-events"
+  imageTag: "latest"
