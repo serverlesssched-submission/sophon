@@ -13,7 +13,7 @@
                 "length": 10,
                 "start_window": 0.5,
                 "start_load": 0.0,
-                "downsample_factor": 0.2
+                "downsample_factor": 0.02
             }
         }
     ]
