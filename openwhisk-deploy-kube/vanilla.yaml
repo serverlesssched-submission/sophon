@@ -1,0 +1,44 @@
+controller:
+  replicaCount: 1
+  imageName: "whisk/controller-sophon"
+  imageTag: "latest"
+  options: "-Dlogback.log.level=INFO"
+whisk:
+  ingress:
+    type: NodePort
+    apiHostName: 
+    apiHostPort: 31001
+  limits:
+    actionsInvokesPerminute: 999999
+    actionsInvokesConcurrent: 999999
+    triggersFiresPerminute: 999999
+    actionsSequenceMaxlength: 999999
+    actions:
+      memory:
+        max: "2048m"
+  containerPool:
+    userMemory: 20480M
+docker:
+  client:
+    parallelRuns: 100
+k8s:
+  persistence:
+    enabled: false
+nginx:
+  replicaCount: 6
+  httpsNodePort: 31001
+invoker:
+  replicaCount: 10
+  imageName: "whisk/invoker-sophon"
+  imageTag: "latest"
+  options: "-Dlogback.log.level=INFO"
+  containerFactory:
+    impl: "docker"
+metrics:
+  prometheusEnabled: true
+  userMetricsEnabled: true
+  kamonEnabled: true
+  kamonTags: true
+user_events:
+  imageName: "whisk/user-events-vanilla"
+  imageTag: "latest"

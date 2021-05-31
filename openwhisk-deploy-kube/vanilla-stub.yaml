@@ -1,0 +1,44 @@
+controller:
+  replicaCount: 1
+  imageName: "whisk/controller-stub-sophon"
+  imageTag: "latest"
+  options: "-Dlogback.log.level=INFO -Dwhisk.loadbalancer.managed-fraction=1.0 -Dwhisk.loadbalancer.overload-behavior=queue -Dwhisk.loadbalancer.lambda=0.3 -Dwhisk.loadbalancer.distance-weight=0.33 -Dwhisk.loadbalancer.eviction-weight=0.67 -Dwhisk.loadbalancer.accept-threshold=10000.0 -Dwhisk.loadbalancer.bp-lambda=0.3 -Dwhisk.loadbalancer.bpdistance-weight=0.05 -Dwhisk.loadbalancer.bpeviction-weight=0.95 -Dwhisk.loadbalancer.bpaccept-threshold=1.0 -Dwhisk.loadbalancer.scheduling-policy=vanilla -Dwhisk.loadbalancer.warm-policy=maxavailable -Dwhisk.loadbalancer.cold-policy=mincost -Dwhisk.loadbalancer.sample-n=100"
+whisk:
+  ingress:
+    type: NodePort
+    apiHostName: 
+    apiHostPort: 31001
+  limits:
+    actionsInvokesPerminute: 999999
+    actionsInvokesConcurrent: 999999
+    triggersFiresPerminute: 999999
+    actionsSequenceMaxlength: 999999
+    actions:
+      memory:
+        max: "2048m"
+  containerPool:
+    userMemory: 20480M
+
+k8s:
+  persistence:
+    enabled: false
+nginx:
+  replicaCount: 20
+  httpsNodePort: 31001
+invoker:
+  replicaCount: 50
+  imageName: "whisk/invoker-stub-sophon"
+  imageTag: "latest"
+  options: "-Dlogback.log.level=INFO"
+  containerFactory:
+    impl: "kubernetes"
+    kubernetes:
+      replicaCount: 50
+metrics:
+  prometheusEnabled: true
+  userMetricsEnabled: true
+  kamonEnabled: true
+  kamonTags: true
+user_events:
+  imageName: "whisk/user-events-stub-sophon"
+  imageTag: "latest"

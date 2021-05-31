@@ -1,0 +1,7 @@
+.DS_Store
+.vscode/
+__pycache__/
+runs/
+real_runs/
+*.png
+*.csv
