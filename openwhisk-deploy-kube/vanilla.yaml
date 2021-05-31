@@ -1,6 +1,6 @@
 controller:
   replicaCount: 1
-  imageName: "whisk/controller-sophon"
+  imageName: "whisk/controller"
   imageTag: "latest"
   options: "-Dlogback.log.level=INFO"
 whisk:
@@ -29,7 +29,7 @@ nginx:
   httpsNodePort: 31001
 invoker:
   replicaCount: 10
-  imageName: "whisk/invoker-sophon"
+  imageName: "whisk/invoker"
   imageTag: "latest"
   options: "-Dlogback.log.level=INFO"
   containerFactory:
@@ -40,5 +40,5 @@ metrics:
   kamonEnabled: true
   kamonTags: true
 user_events:
-  imageName: "whisk/user-events-vanilla"
+  imageName: "whisk/user-events"
   imageTag: "latest"
