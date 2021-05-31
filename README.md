@@ -1,7 +1,7 @@
 # Sophon Serverless Scheduler
 
 ## Build
-Sources of Vanilla OpenWhisk, Vanilla w/ container stub, Sophon, and Sophon w/ container stub are in `vanilla`, `stub-vanilla`, `sophon`, and `stub-sophon`, respectively. 
+Sources of Vanilla OpenWhisk, Vanilla w/ container stub, Sophon, and Sophon w/ container stub are in `vanilla`, `vanilla-stub`, `sophon`, and `sophon-stub`, respectively. 
 
 In the source directory, run `./gradlew distDocker -x test` to build.
 
@@ -12,7 +12,7 @@ Complete "Initial setup" in https://github.com/apache/openwhisk-deploy-kube#init
 
 Distribute whisk/\* Docker images to all worker nodes.
 
-Config files are under `openwhisk-deploy-kube`. Config files of Vanilla OpenWhisk, Vanilla w/ container stub, Sophon, and Sophon w/ container stub are in `vanilla`, `stub-vanilla`, `sophon`, and `stub-sophon`, respectively. 
+Config files are under `openwhisk-deploy-kube`. Config files of Vanilla OpenWhisk, Vanilla w/ container stub, Sophon, and Sophon w/ container stub are in `vanilla.yaml`, `vanilla-stub.yaml`, `sophon.yaml`, and `sophon-stub.yaml`, respectively. 
 
 Customize config files and deploy: https://github.com/apache/openwhisk-deploy-kube#customize-the-deployment.
 
